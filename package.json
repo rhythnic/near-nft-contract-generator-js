@@ -1,0 +1,35 @@
+{
+  "name": "near_nft_contract_generator",
+  "version": "1.0.0-alpha.1",
+  "license": "(MIT AND Apache-2.0)",
+  "type": "module",
+  "scripts": {
+    "build": "near-sdk-js build src/contract.ts build/nft_contract.wasm",
+    "tsc-check": "tsc --noEmit --skipLibCheck --experimentalDecorators --target es2020 --moduleResolution node --traceResolution src/contract.ts --pretty",
+    "test": "$npm_execpath run build && ava -- ./build/nft_contract.wasm",
+    "generate": "tsx src/generator/index.ts src/contract.ts"
+  },
+  "dependencies": {
+    "near-sdk-js": "2.0.0"
+  },
+  "devDependencies": {
+    "ava": "^6.1.3",
+    "near-workspaces": "^4.0.0",
+    "prettier": "^3.5.3",
+    "ramda": "^0.30.1",
+    "tsx": "^4.19.4",
+    "typescript": "^5.4.5"
+  },
+  "ava": {
+    "files": [
+      "sandbox-test/*.ava.js"
+    ]
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": true
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}
